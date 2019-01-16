@@ -136,7 +136,7 @@ module.exports = function (formio) {
     query.limit = formio.config.pageSize;
     return formio.request('get', this.url + '/register/submission?' + serialize(query))
       .then(function (res) {
-        return res;
+        return res.body;
       }.bind(this));
   };  
 
