@@ -127,6 +127,18 @@ module.exports = function (formio) {
         return res.body;
       }.bind(this));
   };
+  /**
+   * Query submissions.
+   * Query object data.searchField : searchTerm
+   */
+  Form.prototype.querySubmissions = function(query) {
+    query = query || {};
+    query.limit = formio.config.pageSize;
+    return formio.request('get', this.url + '/register/submission?' + serialize(query))
+      .then(function (res) {
+        return res.body;
+      }.bind(this));
+  };  
 
   /**
    * Load a particular submission by its ID.
